@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{521EA1C0-B19F-40F8-AEE0-6FB821937CE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E06A9DC4-9C29-43BF-8955-088E12CDDB1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AevatarTemplate.Silo", "src\AevatarTemplate.Silo\AevatarTemplate.Silo.csproj", "{908A419D-ADBB-4F36-A783-F88628765897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AevatarTemplate.Client", "src\AevatarTemplate.Client\AevatarTemplate.Client.csproj", "{F07652B1-AAEA-4576-BD62-203980A9D890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AevatarTemplate.GAgents", "src\AevatarTemplate.GAgents\AevatarTemplate.GAgents.csproj", "{0537F37E-A857-45F8-97A3-8D362BB5948C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AevatarTemplate.Tests", "test\AevatarTemplate.Tests\AevatarTemplate.Tests.csproj", "{252833E4-1250-4517-93D5-6A21F0A1B165}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{908A419D-ADBB-4F36-A783-F88628765897} = {521EA1C0-B19F-40F8-AEE0-6FB821937CE0}
+		{F07652B1-AAEA-4576-BD62-203980A9D890} = {521EA1C0-B19F-40F8-AEE0-6FB821937CE0}
+		{0537F37E-A857-45F8-97A3-8D362BB5948C} = {521EA1C0-B19F-40F8-AEE0-6FB821937CE0}
+		{252833E4-1250-4517-93D5-6A21F0A1B165} = {E06A9DC4-9C29-43BF-8955-088E12CDDB1D}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{908A419D-ADBB-4F36-A783-F88628765897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908A419D-ADBB-4F36-A783-F88628765897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908A419D-ADBB-4F36-A783-F88628765897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908A419D-ADBB-4F36-A783-F88628765897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07652B1-AAEA-4576-BD62-203980A9D890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07652B1-AAEA-4576-BD62-203980A9D890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07652B1-AAEA-4576-BD62-203980A9D890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07652B1-AAEA-4576-BD62-203980A9D890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0537F37E-A857-45F8-97A3-8D362BB5948C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0537F37E-A857-45F8-97A3-8D362BB5948C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0537F37E-A857-45F8-97A3-8D362BB5948C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0537F37E-A857-45F8-97A3-8D362BB5948C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252833E4-1250-4517-93D5-6A21F0A1B165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252833E4-1250-4517-93D5-6A21F0A1B165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252833E4-1250-4517-93D5-6A21F0A1B165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252833E4-1250-4517-93D5-6A21F0A1B165}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
