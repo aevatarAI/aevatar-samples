@@ -2,9 +2,9 @@
 
 This repository contains three projects that work together to demonstrate the use of the Aevatar framework with Orleans. The projects are:
 
-1. **Silo Project**(AevatarTemplate.Silo): This project is used to start the Orleans Silo Host. Each GAgent (an agent in the Aevatar framework) is hosted as a grain by the Silo Host.
-2. **Client Project**(AevatarTemplate.Client): This project is used to create and interact with GAgents.
-3. **GAgents Project**(AevatarTemplate.GAgents): This project can be used to define new GAgent types. You can refer to `SampleGAgent` for the definition process.
+1. **Silo Project**(AevatarTemplate.Silo)
+2. **Client Project**(AevatarTemplate.Client)
+3. **GAgents Project**(AevatarTemplate.GAgents)
 
 ## Projects Overview
 
@@ -46,3 +46,8 @@ dotnet run --project src/AevatarTemplate.Client
 ```
 
 By following these steps, you will be able to start the Silo Host and interact with GAgents using the Client project.
+
+## Technologies Used
+- [.NET Core](https://dotnet.microsoft.com/)
+- [Orleans](https://dotnet.github.io/orleans/)
+- [AevatarAI](https://aevatar.ai/)
