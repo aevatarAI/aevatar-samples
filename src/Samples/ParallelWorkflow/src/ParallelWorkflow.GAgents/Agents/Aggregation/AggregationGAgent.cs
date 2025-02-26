@@ -24,7 +24,7 @@ public class AggregationGAgent : GAgentBase<AggregationState, AggregationStateLo
     {
         Logger.LogInformation("Handle aggregation event.");
         
-        var transfers = FilterTransferAsync(@event.Transactions);
+        var transfers = FilterTransfer(@event.Transactions);
         var result = new Dictionary<string, List<TransferInfo>>();
         foreach (var transfer in transfers)
         {
@@ -60,7 +60,7 @@ public class AggregationGAgent : GAgentBase<AggregationState, AggregationStateLo
         }
     }
 
-    private List<TransferInfo> FilterTransferAsync(List<TransactionResultDto> transactionResults)
+    private List<TransferInfo> FilterTransfer(List<TransactionResultDto> transactionResults)
     {
         // Get transfer information based on the transaction result events
         return

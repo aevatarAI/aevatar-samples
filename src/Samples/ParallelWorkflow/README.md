@@ -1,4 +1,4 @@
-# Agent Orchestration System
+# Parallel Workflow Sample
 
 This sample orchestrates two GAgents to collect user transfer data and utilizes parallel execution to improve execution efficiency.
 
