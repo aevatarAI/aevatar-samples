@@ -5,6 +5,8 @@
     <OrleansVerion>9.0.1</OrleansVerion>
     <AevatarVerion>1.4.10</AevatarVerion>
     <AevatarSignalRVerion>1.5.1</AevatarSignalRVerion>
+    <GAgentVersion>1.1.4</GAgentVersion>
+      
   </PropertyGroup>
   <ItemGroup>
     <!-- Aevatar packages -->
@@ -14,9 +16,10 @@
     <PackageVersion Include="Aevatar.EventSourcing.Core" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.EventSourcing.MongoDB" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.Plugins" Version="$(AevatarVerion)" />
-    <PackageVersion Include="Aevatar.AI.Abstractions" Version="$(AevatarVerion)" />
-    <PackageVersion Include="Aevatar.AI.AIGAgent" Version="$(AevatarVerion)" />
-    <PackageVersion Include="Aevatar.AI.SemanticKernel" Version="$(AevatarVerion)" />
+    <PackageVersion Include="Aevatar.GAgents.AIGAgent" Version="$(GAgentVersion)" />
+    <PackageVersion Include="Aevatar.GAgents.SemanticKernel" Version="$(GAgentVersion)" />
+    <PackageVersion Include="Aevatar.GAgents.AI.Abstractions" Version="$(GAgentVersion)" />
+    <PackageVersion Include="Aevatar.GAgents.Basic" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.SignalR" Version="$(AevatarSignalRVerion)" />
     <!-- AElf packages -->
     <PackageVersion Include="AElf.Client" Version="1.1.0" />
@@ -137,6 +140,7 @@
     <PackageVersion Include="MongoDB.Driver" Version="2.29.0" />
     <PackageVersion Include="MongoDB.Bson" Version="2.29.0" />
     <PackageVersion Include="Orleans.Providers.MongoDB" Version="8.1.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0" />
     <!-- Serilog packages -->
     <PackageVersion Include="Serilog" Version="4.0.0" />
     <PackageVersion Include="Serilog.Extensions.Hosting" Version="8.0.0" />
