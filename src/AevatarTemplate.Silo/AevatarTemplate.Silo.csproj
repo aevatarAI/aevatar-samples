@@ -23,8 +23,6 @@
         <PackageReference Include="Aevatar.Core" />
         <PackageReference Include="Aevatar.EventSourcing.MongoDB" />
         <PackageReference Include="Aevatar.Plugins" />
-        <PackageReference Include="Aevatar.AI.AIGAgent" />
-        <PackageReference Include="Aevatar.AI.SemanticKernel" />
     </ItemGroup>
 
     <ItemGroup>
