@@ -14,7 +14,7 @@
     <PackageVersion Include="Aevatar.Core.Abstractions" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.EventSourcing.Core" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.EventSourcing.MongoDB" Version="$(AevatarVerion)" />
-    <PackageVersion Include="Aevatar.GAgents.Router" Version="1.2.3" />
+    <PackageVersion Include="Aevatar.GAgents.Router" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.Plugins" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.GAgents.AIGAgent" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.SemanticKernel" Version="$(GAgentVersion)" />
