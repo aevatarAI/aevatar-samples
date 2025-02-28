@@ -21,18 +21,18 @@ This sample orchestrates two GAgents to collect user transfer data and utilizes 
 
 ### Start the Silo Project
 
-Navigate to the Silo project directory and run the following command:
+Navigate to the Silo project directory (../Samples/ParallelWorkflow/src/ParallelWorkflow.Silo/) and run the following command:
 
 ```sh
-dotnet run --project ParallelWorkflow.Silo
+dotnet run
 ```
 
 ### Start the Client Project
 
-Navigate to the Client project directory and run the following command:
+Navigate to the Client project directory (../Samples/ParallelWorkflow/src/ParallelWorkflow.Client/) and run the following command:
 
 ```sh
-dotnet run --project ParallelWorkflow.Client
+dotnet run
 ```
 
 By following these steps, you will be able to start the Silo Host and interact with GAgents using the Client project.
