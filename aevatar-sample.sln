@@ -26,6 +26,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialWorkflow.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialWorkflow.GAgents", "src\Samples\SequentialWorkflow\SequentialWorkflow.GAgents\SequentialWorkflow.GAgents.csproj", "{C0C51378-95E9-4038-835E-A96527842C8A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphRagIntegration", "GraphRagIntegration", "{5D21E588-FBCF-4D5A-A39D-452EA043E5A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphRagIntegraion.Client", "src\Samples\GraphRagIntegraion.Client\GraphRagIntegraion.Client.csproj", "{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphRagIntegration.Silo", "src\Samples\GraphRagIntegration.Silo\GraphRagIntegration.Silo.csproj", "{A14B9A1D-46C5-4629-A50E-161AE0037652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphRagIntegration.GAgents", "src\Samples\GraphRagIntegration.GAgents\GraphRagIntegration.GAgents.csproj", "{81025EBA-2845-4C7F-9B6E-8091FABD1A53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +52,10 @@ Global
 		{6DBD7D5E-008A-4359-AB30-EB6290DEF194} = {180CDCE4-70F4-4EE9-B4CF-DC42846ADE19}
 		{9845706D-FA24-4370-85E3-31B528086975} = {180CDCE4-70F4-4EE9-B4CF-DC42846ADE19}
 		{C0C51378-95E9-4038-835E-A96527842C8A} = {180CDCE4-70F4-4EE9-B4CF-DC42846ADE19}
+		{5D21E588-FBCF-4D5A-A39D-452EA043E5A9} = {B06FA57A-1671-48B6-B37F-00A4566EF347}
+		{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF} = {5D21E588-FBCF-4D5A-A39D-452EA043E5A9}
+		{A14B9A1D-46C5-4629-A50E-161AE0037652} = {5D21E588-FBCF-4D5A-A39D-452EA043E5A9}
+		{81025EBA-2845-4C7F-9B6E-8091FABD1A53} = {5D21E588-FBCF-4D5A-A39D-452EA043E5A9}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{54A0E41D-0829-40C3-8539-773AF8F3D4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -74,5 +86,17 @@ Global
 		{C0C51378-95E9-4038-835E-A96527842C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0C51378-95E9-4038-835E-A96527842C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0C51378-95E9-4038-835E-A96527842C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A14B9A1D-46C5-4629-A50E-161AE0037652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A14B9A1D-46C5-4629-A50E-161AE0037652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A14B9A1D-46C5-4629-A50E-161AE0037652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A14B9A1D-46C5-4629-A50E-161AE0037652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81025EBA-2845-4C7F-9B6E-8091FABD1A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81025EBA-2845-4C7F-9B6E-8091FABD1A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81025EBA-2845-4C7F-9B6E-8091FABD1A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81025EBA-2845-4C7F-9B6E-8091FABD1A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -5,7 +5,7 @@
     <OrleansVerion>9.0.1</OrleansVerion>
     <AevatarVerion>1.4.10</AevatarVerion>
     <AevatarSignalRVerion>1.5.1</AevatarSignalRVerion>
-    <GAgentVersion>1.1.4</GAgentVersion>
+    <GAgentVersion>1.2.6-graphrag</GAgentVersion>
       
   </PropertyGroup>
   <ItemGroup>
@@ -20,6 +20,7 @@
     <PackageVersion Include="Aevatar.GAgents.SemanticKernel" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.AI.Abstractions" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.Basic" Version="$(GAgentVersion)" />
+    <PackageVersion Include="Aevatar.GAgents.ChatAgent" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.SignalR" Version="$(AevatarSignalRVerion)" />
     <!-- AElf packages -->
     <PackageVersion Include="AElf.Client" Version="1.1.0" />
