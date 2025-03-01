@@ -3,6 +3,8 @@ using GraphRagIntegration.GAgents.MovieChatAgent;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Orleans;
+using Orleans.Hosting;
 
 
 IHostBuilder builder = Host.CreateDefaultBuilder(args)
