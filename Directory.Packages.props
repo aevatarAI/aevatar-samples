@@ -3,10 +3,10 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <AbpVersion>9.0.3</AbpVersion>
     <OrleansVerion>9.0.1</OrleansVerion>
-    <AevatarVerion>1.4.10</AevatarVerion>
+    <AevatarVerion>1.4.11-projection.1</AevatarVerion>
     <AevatarSignalRVerion>1.5.1</AevatarSignalRVerion>
     <GAgentVersion>1.1.4</GAgentVersion>
-      
+
   </PropertyGroup>
   <ItemGroup>
     <!-- Aevatar packages -->

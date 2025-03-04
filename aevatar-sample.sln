@@ -26,6 +26,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialWorkflow.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialWorkflow.GAgents", "src\Samples\SequentialWorkflow\SequentialWorkflow.GAgents\SequentialWorkflow.GAgents.csproj", "{C0C51378-95E9-4038-835E-A96527842C8A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TokenUsageProjection", "TokenUsageProjection", "{8DEB1D1F-19A8-4D12-B9E0-038910FAFF09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenUsageProjection.Client", "src\Samples\TokenUsageProjection\TokenUsageProjection.Client\TokenUsageProjection.Client.csproj", "{9D099922-6A98-4FFB-A6F1-29743FE34298}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenUsageProjection.GAgents", "src\Samples\TokenUsageProjection\TokenUsageProjection.GAgents\TokenUsageProjection.GAgents.csproj", "{BB4EAF71-F32B-4540-8D62-3C74381EA660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenUsageProjection.Silo", "src\Samples\TokenUsageProjection\TokenUsageProjection.Silo\TokenUsageProjection.Silo.csproj", "{A4D60DD0-8AE3-456C-AD77-60ED93FBD36E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +52,10 @@ Global
 		{6DBD7D5E-008A-4359-AB30-EB6290DEF194} = {180CDCE4-70F4-4EE9-B4CF-DC42846ADE19}
 		{9845706D-FA24-4370-85E3-31B528086975} = {180CDCE4-70F4-4EE9-B4CF-DC42846ADE19}
 		{C0C51378-95E9-4038-835E-A96527842C8A} = {180CDCE4-70F4-4EE9-B4CF-DC42846ADE19}
+		{8DEB1D1F-19A8-4D12-B9E0-038910FAFF09} = {B06FA57A-1671-48B6-B37F-00A4566EF347}
+		{9D099922-6A98-4FFB-A6F1-29743FE34298} = {8DEB1D1F-19A8-4D12-B9E0-038910FAFF09}
+		{BB4EAF71-F32B-4540-8D62-3C74381EA660} = {8DEB1D1F-19A8-4D12-B9E0-038910FAFF09}
+		{A4D60DD0-8AE3-456C-AD77-60ED93FBD36E} = {8DEB1D1F-19A8-4D12-B9E0-038910FAFF09}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{54A0E41D-0829-40C3-8539-773AF8F3D4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -74,5 +86,17 @@ Global
 		{C0C51378-95E9-4038-835E-A96527842C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0C51378-95E9-4038-835E-A96527842C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0C51378-95E9-4038-835E-A96527842C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D099922-6A98-4FFB-A6F1-29743FE34298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D099922-6A98-4FFB-A6F1-29743FE34298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D099922-6A98-4FFB-A6F1-29743FE34298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D099922-6A98-4FFB-A6F1-29743FE34298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB4EAF71-F32B-4540-8D62-3C74381EA660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB4EAF71-F32B-4540-8D62-3C74381EA660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB4EAF71-F32B-4540-8D62-3C74381EA660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB4EAF71-F32B-4540-8D62-3C74381EA660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D60DD0-8AE3-456C-AD77-60ED93FBD36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D60DD0-8AE3-456C-AD77-60ED93FBD36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D60DD0-8AE3-456C-AD77-60ED93FBD36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D60DD0-8AE3-456C-AD77-60ED93FBD36E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
