@@ -22,7 +22,6 @@ using var host = builder.Build();
 await host.StartAsync();
 
 var gAgentFactory = host.Services.GetRequiredService<IGAgentFactory>();
-var gAgentManager = host.Services.GetRequiredService<IGAgentManager>();
 
 Console.WriteLine("Select an option:");
 Console.WriteLine("1. Demo token usage.");
@@ -53,7 +52,15 @@ async Task DemoAsync(IGAgentFactory factory)
     var aiGAgent = await factory.GetGAgentAsync<ISampleAIGAgent>("test".ToGuid());
     var projectionGAgent = await factory.GetGAgentAsync<IStateGAgent<TokenUsageProjectionGAgentState>>("test".ToGuid());
     await aiGAgent.PretendingChatAsync("whatever");
+    await aiGAgent.PretendingChatAsync("whatever");
+    await aiGAgent.PretendingChatAsync("whatever");
+    await aiGAgent.PretendingChatAsync("whatever");
+    await aiGAgent.PretendingChatAsync("whatever");
     await Task.Delay(3000);
     var state = await projectionGAgent.GetStateAsync();
-    Console.WriteLine($"Token used: {state.TotalUsedToken}");
+    Console.WriteLine($"Total token used: {state.TotalUsedToken}");
+    Console.WriteLine($"Input token used: {state.TotalInputToken}");
+    Console.WriteLine($"Output token used: {state.TotalOutputToken}");
+    Console.WriteLine($"Input token used per second: {state.GetUsedInputTokenCount(new TimeSpan(0, 0, 1))}");
+    Console.WriteLine($"Output token used per second: {state.GetUsedOutputTokenCount(new TimeSpan(0, 0, 1))}");
 }

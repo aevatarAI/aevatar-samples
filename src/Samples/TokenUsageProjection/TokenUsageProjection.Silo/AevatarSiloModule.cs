@@ -1,4 +1,5 @@
 using Aevatar.Core.Abstractions;
+using Aevatar.PermissionManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Volo.Abp.AutoMapper;
@@ -6,6 +7,9 @@ using Volo.Abp.Modularity;
 
 namespace AevatarTemplate.Silo;
 
+[DependsOn(
+    typeof(AevatarPermissionManagementModule)
+)]
 public class AevatarSiloModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)

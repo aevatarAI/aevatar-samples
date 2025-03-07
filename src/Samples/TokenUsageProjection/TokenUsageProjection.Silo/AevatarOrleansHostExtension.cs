@@ -42,6 +42,7 @@ public static class AevatarOrleansHostExtension
                             .AddQdrantVectorStore()
                             .AddAzureOpenAITextEmbedding();
                         services.AddTransient<IStateDispatcher, StateDispatcher>();
+                        services.AddTransient<IStateProjector, TestStateProjector>();
                     })
                     .UseAevatar<AevatarSiloModule>();
             })
