@@ -26,13 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialWorkflow.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialWorkflow.GAgents", "src\Samples\SequentialWorkflow\SequentialWorkflow.GAgents\SequentialWorkflow.GAgents.csproj", "{C0C51378-95E9-4038-835E-A96527842C8A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphRagIntegration", "GraphRagIntegration", "{5D21E588-FBCF-4D5A-A39D-452EA043E5A9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphIngestion", "GraphIngestion", "{5D21E588-FBCF-4D5A-A39D-452EA043E5A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphRagIntegration.Client", "src\Samples\GraphRagIntegration\GraphRagIntegration.Client\GraphRagIntegration.Client.csproj", "{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphIngestion.Client", "src\Samples\GraphRagIntegration\GraphIngestion.Client\GraphIngestion.Client.csproj", "{2A80EA75-F7DA-4A1F-AEBD-5CE86B81A9EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphRagIntegration.Silo", "src\Samples\GraphRagIntegration\GraphRagIntegration.Silo\GraphRagIntegration.Silo.csproj", "{A14B9A1D-46C5-4629-A50E-161AE0037652}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphIngestion.Silo", "src\Samples\GraphRagIntegration\GraphIngestion.Silo\GraphIngestion.Silo.csproj", "{A14B9A1D-46C5-4629-A50E-161AE0037652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphRagIntegration.GAgents", "src\Samples\GraphRagIntegration\GraphRagIntegration.GAgents\GraphRagIntegration.GAgents.csproj", "{81025EBA-2845-4C7F-9B6E-8091FABD1A53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphIngestion.GAgents", "src\Samples\GraphRagIntegration\GraphIngestion.GAgents\GraphIngestion.GAgents.csproj", "{81025EBA-2845-4C7F-9B6E-8091FABD1A53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
