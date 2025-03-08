@@ -38,7 +38,7 @@ public class SportsGAgent : GAgentBase<SportsGAgentState, SportsStateLogEvent>, 
 
     public override Task<string> GetDescriptionAsync()
     {
-        return Task.FromResult("");
+        return Task.FromResult("SportsAgent is a Neo4j graph database agent designed for sports domain data management");
     }
     
     public async Task CreateDataAsync(IEnumerable<Node> nodes, IEnumerable<Relationship> relationships)
