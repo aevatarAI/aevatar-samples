@@ -1,10 +1,9 @@
 using Aevatar.GAgents.AIGAgent.Dtos;
-using GraphRagIntegration.GAgents.MovieChatAgent;
+using Aevatar.GAgents.GraphRetrievalAgent.GAgent;
+using Aevatar.GAgents.GraphRetrievalAgent.Model;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Orleans;
-using Orleans.Hosting;
 
 
 IHostBuilder builder = Host.CreateDefaultBuilder(args)
@@ -21,13 +20,14 @@ await host.StartAsync();
 
 IClusterClient client = host.Services.GetRequiredService<IClusterClient>();
 
-var movieChatGAgent = client.GetGrain<IMovieChatGAgent>(Guid.NewGuid());
+var graphAgent = client.GetGrain<IGraphRetrievalAgent>(Guid.NewGuid());
 
-await movieChatGAgent.InitializeAsync(new InitializeDto
+await graphAgent.InitializeAsync(new InitializeDto
 {
     Instructions = "talk about movies",
-    LLM = "AzureOpenAI",
+    LLMConfig = new LLMConfigDto() { SystemLLM = "OpenAI" }
 });
+
 
 var schema = """
              Node properties:
@@ -50,7 +50,11 @@ var schema = """
 var example =
     "USER INPUT: 'Which actors starred in the Matrix?' QUERY: MATCH (p:Person)-[:ACTED_IN]->(m:Movie) WHERE m.title = 'The Matrix' RETURN p.name";
 
-await movieChatGAgent.SetGraphRagRetrieveInfo(schema, example);
+await graphAgent.ConfigAsync(new GraphRetrievalConfig()
+{
+    Schema = schema,
+    Example = example
+});
 
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Assistant > Press enter with no prompt to exit.");
@@ -76,9 +80,7 @@ while (!cancellationToken.IsCancellationRequested)
         break;
     }
 
-    var result = await movieChatGAgent.ChatAsync(question);
-    var response = result?[0].Content;
-    
+    var response = await graphAgent.InvokeLLMWithGraphRetrievalAsync(question);
     
     // Stream the LLM response to the console with error handling.
     Console.ForegroundColor = ConsoleColor.Green;

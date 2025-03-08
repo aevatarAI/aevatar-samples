@@ -5,7 +5,8 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>GraphRagIntegraion.Client</RootNamespace>
+        <RootNamespace>GraphRetrieval.Client</RootNamespace>
+        <AssemblyName>GraphRetrieval.Client</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,12 +14,8 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Console"/>
         <PackageReference Include="Microsoft.Extensions.Hosting"/>
         <PackageReference Include="Aevatar.Core.Abstractions" />
-        <PackageReference Include="Aevatar.GAgents.ChatAgent" />
+        <PackageReference Include="Aevatar.GAgents.GraphRetrievalAgent" />
         <PackageReference Include="Aevatar.Core" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\GraphRagIntegration.GAgents\GraphRagIntegration.GAgents.csproj" />
     </ItemGroup>
 
 </Project>
