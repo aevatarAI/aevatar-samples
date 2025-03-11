@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Aevatar.Core;
 using Aevatar.Core.Abstractions;
+using Microsoft.Extensions.Logging;
 
 namespace TokenUsageProjection.GAgents;
 
@@ -12,7 +13,11 @@ public class TokenUsageProjectionGAgentState : StateBase
     [Id(2)] public long TotalOutputToken { get; set; }
     [Id(3)] public long ElapsedSeconds { get; set; }
     [Id(4)] public HashSet<Guid> ActivatedGAgentPrimaryKeys { get; set; } = [];
-    
+    [Id(5)] public DateTime LastSnapshotTime { get; set; }
+    [Id(6)] public long LastSnapshotTotalUsedToken { get; set; }
+    [Id(7)] public long LastSnapshotTotalInputToken { get; set; }
+    [Id(8)] public long LastSnapshotTotalOutputToken { get; set; }
+
     public decimal GetUsedInputTokenCount(TimeSpan? timeSpan = null)
     {
         timeSpan ??= new TimeSpan(0, 5, 0);
@@ -36,6 +41,22 @@ public class TokenUsageProjectionGAgent : StateProjectionGAgentBase<SampleAIGAge
     public override Task<string> GetDescriptionAsync()
     {
         return Task.FromResult("This is a GAgent for testing token usage projection.");
+    }
+
+    [EventHandler]
+    public async Task HandleTakeSnapshotAsync(TakeSnapshotEvent takeSnapshotEvent)
+    {
+        Logger.LogInformation("HandleTakeSnapshotAsync");
+        await PublishAsync(new ResponseSnapshotEvent
+        {
+            From = State.LastSnapshotTime,
+            To = DateTime.UtcNow,
+            UsedToken = State.TotalUsedToken - State.LastSnapshotTotalUsedToken,
+            InputToken = State.TotalInputToken - State.LastSnapshotTotalInputToken,
+            OutputToken = State.TotalOutputToken - State.LastSnapshotTotalOutputToken
+        });
+        RaiseEvent(new TakeSnapshotStateLogEvent());
+        await ConfirmEvents();
     }
 
     protected override async Task HandleStateAsync(StateWrapper<SampleAIGAgentState> projectionStateWrapper)
@@ -69,6 +90,12 @@ public class TokenUsageProjectionGAgent : StateProjectionGAgentBase<SampleAIGAge
             case MaybeNewGAgentStateLogEvent maybeNewGAgentStateLogEvent:
                 State.ActivatedGAgentPrimaryKeys.AddIfNotContains(maybeNewGAgentStateLogEvent.GAgentPrimaryKey);
                 break;
+            case TakeSnapshotStateLogEvent:
+                State.LastSnapshotTime = DateTime.UtcNow;
+                State.LastSnapshotTotalUsedToken = State.TotalUsedToken;
+                State.LastSnapshotTotalInputToken = State.TotalInputToken;
+                State.LastSnapshotTotalOutputToken = State.TotalOutputToken;
+                break;
         }
     }
 
@@ -85,5 +112,10 @@ public class TokenUsageProjectionGAgent : StateProjectionGAgentBase<SampleAIGAge
     public class MaybeNewGAgentStateLogEvent : StateLogEventBase<TokenUsageProjectionStateLogEvent>
     {
         [Id(0)] public Guid GAgentPrimaryKey { get; set; }
+    }
+    
+    [GenerateSerializer]
+    public class TakeSnapshotStateLogEvent : StateLogEventBase<TokenUsageProjectionStateLogEvent>
+    {
     }
 }

@@ -20,7 +20,7 @@ public class SampleAIStateLogEvent : StateLogEventBase<SampleAIStateLogEvent>;
 
 public interface ISampleAIGAgent : IAIGAgent, IStateGAgent<SampleAIGAgentState>
 {
-    Task PretendingChatAsync(string message);
+    Task<(int, int, int)> PretendingChatAsync(string message);
 }
 
 [GAgent]
@@ -31,7 +31,7 @@ public class SampleAIGAgent : AIGAgentBase<SampleAIGAgentState, SampleAIStateLog
         return Task.FromResult("An AI GAgent sample to test state projection.");
     }
 
-    public async Task PretendingChatAsync(string message)
+    public async Task<(int, int, int)> PretendingChatAsync(string message)
     {
         Logger.LogInformation("Call PretendingChatAsync");
         var tokenUsage = new TokenUsageStateLogEvent
@@ -43,6 +43,20 @@ public class SampleAIGAgent : AIGAgentBase<SampleAIGAgentState, SampleAIStateLog
         };
         RaiseEvent(tokenUsage);
         await ConfirmEvents();
+        return (2000 + message.Length, message.Length, 2000);
+    }
+    
+    [EventHandler]
+    public async Task HandleChatAsync(ChatEvent chatEvent)
+    {
+        Logger.LogInformation("HandleChatAsync");
+        var (total, input, output) = await PretendingChatAsync(chatEvent.Message);
+        await PublishAsync(new ResponseChatEvent
+        {
+            TotalUsedToken = total,
+            UsedInputToken = input,
+            UsedOutputToken = output
+        });
     }
 
     protected override void AIGAgentTransitionState(SampleAIGAgentState state, StateLogEventBase<SampleAIStateLogEvent> @event)

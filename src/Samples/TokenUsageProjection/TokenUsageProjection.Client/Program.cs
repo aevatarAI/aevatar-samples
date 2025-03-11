@@ -1,66 +1,101 @@
-﻿using Aevatar.Core.Abstractions;
-using Aevatar.Core.Abstractions.Extensions;
-using Aevatar.Extensions;
-using Aevatar.GAgents.AIGAgent.Dtos;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+﻿using Aevatar.Core.Abstractions.Extensions;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using TokenUsageProjection.GAgents;
 
-var builder = Host.CreateDefaultBuilder(args)
-    .UseOrleansClient(client =>
-    {
-        client.UseLocalhostClustering()
-            .UseMongoDBClient("mongodb://localhost:27017/?maxPoolSize=555")
-            .AddMemoryStreams(AevatarCoreConstants.StreamProvider)
-            .UseAevatar();
-    })
-    .ConfigureLogging(logging => logging.AddConsole())
-    .UseConsoleLifetime();
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile("appsettings.secrets.json", optional: true)
+    .Build();
 
-using var host = builder.Build();
-await host.StartAsync();
+var signalRConfig = configuration.GetSection("SignalR");
+var hubUrl = signalRConfig["HubUrl"];
 
-var gAgentFactory = host.Services.GetRequiredService<IGAgentFactory>();
+var connection = new HubConnectionBuilder()
+    .WithUrl(hubUrl!)
+    .WithAutomaticReconnect() 
+    .Build();
+
+connection.On<string>("ReceiveResponse", (message) =>
+{
+    Console.WriteLine($"[Event] {message}");
+});
+
+await connection.StartAsync();
 
 Console.WriteLine("Select an option:");
-Console.WriteLine("1. Demo token usage.");
+Console.WriteLine("1. Chat");
+Console.WriteLine("2. Take snapshot");
 
 var choice = Console.ReadLine();
 
-switch (choice)
+while (true)
 {
-    case "1":
-        await DemoAsync(gAgentFactory);
-        break;
-    default:
-        Console.WriteLine("Invalid choice.");
-        break;
+    switch (choice)
+    {
+        case "1":
+            await PublishEventAsync("SubscribeAsync", typeof(ChatEvent), JsonConvert.SerializeObject(new ChatEvent
+            {
+                Message = "Test message"
+            }));
+            break;
+        default:
+            await PublishEventAsync("PublishEventAsync", typeof(TakeSnapshotEvent),
+                JsonConvert.SerializeObject(new TakeSnapshotEvent()));
+            break;
+    }
+    
+    choice = Console.ReadLine();
 }
 
-async Task ListAllAvailableGAgentsAsync(IGAgentManager manager)
+async Task PublishEventAsync(string methodName, Type eventType, string eventJson)
 {
-    var gAgents = manager.GetAvailableGAgentGrainTypes();
-    foreach (var gAgent in gAgents)
+    try
     {
-        Console.WriteLine(gAgent.ToString());
+        await SendEventWithRetry(connection, methodName,
+            "TokenUsageProjection.GAgents.SampleAIGAgent",
+            "test".ToGuid().ToString("N"),
+            eventType.FullName!,
+            eventJson);
+
+        Console.WriteLine("✅ Success");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ Abnormal: {ex.Message}");
     }
 }
 
-async Task DemoAsync(IGAgentFactory factory)
+async Task SendEventWithRetry(HubConnection conn, string methodName, string grainType, string grainKey, string eventTypeName, string eventJson)
 {
-    var aiGAgent = await factory.GetGAgentAsync<ISampleAIGAgent>("test".ToGuid());
-    var projectionGAgent = await factory.GetGAgentAsync<IStateGAgent<TokenUsageProjectionGAgentState>>("test".ToGuid());
-    await aiGAgent.PretendingChatAsync("whatever");
-    await aiGAgent.PretendingChatAsync("whatever");
-    await aiGAgent.PretendingChatAsync("whatever");
-    await aiGAgent.PretendingChatAsync("whatever");
-    await aiGAgent.PretendingChatAsync("whatever");
-    await Task.Delay(3000);
-    var state = await projectionGAgent.GetStateAsync();
-    Console.WriteLine($"Total token used: {state.TotalUsedToken}");
-    Console.WriteLine($"Input token used: {state.TotalInputToken}");
-    Console.WriteLine($"Output token used: {state.TotalOutputToken}");
-    Console.WriteLine($"Input token used per second: {state.GetUsedInputTokenCount(new TimeSpan(0, 0, 1))}");
-    Console.WriteLine($"Output token used per second: {state.GetUsedOutputTokenCount(new TimeSpan(0, 0, 1))}");
+    var grainId = GrainId.Create(grainType, grainKey);
+    const int maxRetries = 3;
+    var retryCount = 0;
+
+    while (retryCount < maxRetries)
+    {
+        try
+        {
+            if (conn.State != HubConnectionState.Connected)
+            {
+                Console.WriteLine("Connection broke, retrying...");
+                await conn.StartAsync();
+            }
+
+            var signalRGAgentGrainId = await connection.InvokeAsync<GrainId>(methodName, grainId, eventTypeName, eventJson);
+            Console.WriteLine($"SignalRGAgent GrainId: {signalRGAgentGrainId.ToString()}");
+            return;
+        }
+        catch (Exception ex)
+        {
+            retryCount++;
+            Console.WriteLine($"❌ Failed（Retry {retryCount}/{maxRetries}）: {ex.Message}");
+            if (retryCount >= maxRetries)
+            {
+                throw;
+            }
+            await Task.Delay(1000 * retryCount);
+        }
+    }
 }

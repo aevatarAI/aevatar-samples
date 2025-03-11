@@ -8,18 +8,24 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Aevatar" />
+        <PackageReference Include="Aevatar.Core.Abstractions" />
+        <PackageReference Include="Aevatar.SignalR" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" />
+        <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="Microsoft.Orleans.Client" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" />
         <PackageReference Include="Microsoft.Extensions.Hosting" />
-        <PackageReference Include="Orleans.Providers.MongoDB" />
-        <PackageReference Include="Aevatar" />
-        <PackageReference Include="Aevatar.Core" />
-        <PackageReference Include="Aevatar.EventSourcing.MongoDB" />
-        <PackageReference Include="Aevatar.Plugins" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\TokenUsageProjection.GAgents\TokenUsageProjection.GAgents.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>
