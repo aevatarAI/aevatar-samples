@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>GraphIngestion.GAgents</AssemblyName>
+        <RootNamespace>GraphIngestion.GAgents</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aevatar.Core.Abstractions"/>
+        <PackageReference Include="Aevatar.Core"/>
+        <PackageReference Include="Aevatar.EventSourcing.Core"/>
+        <PackageReference Include="Aevatar.GAgents.ChatAgent" />
+        <PackageReference Include="Neo4j.Driver" />
+    </ItemGroup>
+    
+</Project>
