@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>GraphRetrieval.Client</RootNamespace>
+        <AssemblyName>GraphRetrieval.Client</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Console"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting"/>
+        <PackageReference Include="Aevatar.Core.Abstractions" />
+        <PackageReference Include="Aevatar.GAgents.GraphRetrievalAgent" />
+        <PackageReference Include="Aevatar.Core" />
+    </ItemGroup>
+
+</Project>
