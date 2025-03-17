@@ -1,7 +1,11 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Aevatar.Core.Abstractions;
+using Aevatar.Extensions;
+using Aevatar.PermissionManagement.Extensions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Permission.Silo;
 using Serilog;
 
 var configuration = new ConfigurationBuilder()
@@ -14,6 +18,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 var builder = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((_, services) => { services.AddApplication<PermissionGAgentTestModule>(); })
     .UseOrleans(silo =>
     {
         silo.AddMemoryGrainStorage("Default")
@@ -21,8 +26,12 @@ var builder = Host.CreateDefaultBuilder(args)
             .AddMemoryGrainStorage("PubSubStore")
             .AddLogStorageBasedLogConsistencyProvider("LogStorage")
             .UseLocalhostClustering()
-            .ConfigureLogging(logging => logging.AddConsole());
+            .UseMongoDBClient("mongodb://localhost:27017/?maxPoolSize=555")
+            .ConfigureLogging(logging => logging.AddConsole())
+            .UseAevatar()
+            .UseAevatarPermissionManagement();
     })
+    .UseAutofac()
     .UseConsoleLifetime();
 
 using var host = builder.Build();
