@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <AbpVersion>9.0.3</AbpVersion>
     <OrleansVerion>9.0.1</OrleansVerion>
-    <AevatarVerion>1.4.10</AevatarVerion>
+    <AevatarVerion>1.4.11-alpha.2</AevatarVerion>
     <AevatarSignalRVerion>1.5.1</AevatarSignalRVerion>
     <GAgentVersion>1.3.4-graphrag</GAgentVersion>
       
@@ -16,12 +16,14 @@
     <PackageVersion Include="Aevatar.EventSourcing.Core" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.EventSourcing.MongoDB" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.Plugins" Version="$(AevatarVerion)" />
+    <PackageVersion Include="Aevatar.PermissionManagement" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.GAgents.AIGAgent" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.SemanticKernel" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.AI.Abstractions" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.Basic" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.SignalR" Version="$(AevatarSignalRVerion)" />
     <PackageVersion Include="Aevatar.GAgents.GraphRetrievalAgent" Version="$(GAgentVersion)" />
+    
     <!-- AElf packages -->
     <PackageVersion Include="AElf.Client" Version="1.1.0" />
     <PackageVersion Include="AElf.ExceptionHandler.ABP" Version="8.2.8" />
