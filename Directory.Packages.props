@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <AbpVersion>9.0.3</AbpVersion>
     <OrleansVerion>9.0.1</OrleansVerion>
-    <AevatarVerion>1.4.10</AevatarVerion>
+    <AevatarVerion>1.5.0-testkit.1</AevatarVerion>
     <AevatarSignalRVerion>1.5.1</AevatarSignalRVerion>
     <GAgentVersion>1.3.4-graphrag</GAgentVersion>
       
@@ -16,6 +16,7 @@
     <PackageVersion Include="Aevatar.EventSourcing.Core" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.EventSourcing.MongoDB" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.Plugins" Version="$(AevatarVerion)" />
+    <PackageVersion Include="Aevatar.TestKit" Version="$(AevatarVerion)" />
     <PackageVersion Include="Aevatar.GAgents.AIGAgent" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.SemanticKernel" Version="$(GAgentVersion)" />
     <PackageVersion Include="Aevatar.GAgents.AI.Abstractions" Version="$(GAgentVersion)" />
