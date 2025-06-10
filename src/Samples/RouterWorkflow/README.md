@@ -37,16 +37,15 @@ graph TD;
 Open silo's configuration file (../Samples/RouterWorkflow/src/RouterWorkflow.Silo/appsettings.json) and configure the AIServices section. 
 
 ```json
-"AIServices": {
-  "AzureOpenAI": {
-    "Endpoint": "",
-    "ChatDeploymentName": "",
-    "ApiKey": ""
-  },
-  "AzureOpenAIEmbeddings": {
-    "Endpoint": "",
-    "DeploymentName": "",
-    "ApiKey": ""
+{
+  "SystemLLMConfigs": {
+    "OpenAI": {
+      "ProviderEnum": "Azure",
+      "ModelIdEnum": "OpenAI",
+      "ModelName": "gpt-4o",
+      "Endpoint": "",
+      "ApiKey": ""
+    }
   }
 }
 ```

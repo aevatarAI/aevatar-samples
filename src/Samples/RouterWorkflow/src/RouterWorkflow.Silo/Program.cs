@@ -19,16 +19,9 @@ var builder = Host.CreateDefaultBuilder(args)
             .ConfigureLogging(logging => logging.AddConsole());
     })
     .ConfigureServices((context, services) =>
-    {
-        services.Configure<AzureOpenAIConfig>(context.Configuration.GetSection("AIServices:AzureOpenAI"));
-        services.Configure<QdrantConfig>(context.Configuration.GetSection("VectorStores:Qdrant"));
-        services.Configure<AzureOpenAIEmbeddingsConfig>(context.Configuration.GetSection("AIServices:AzureOpenAIEmbeddings"));
-        services.Configure<RagConfig>(context.Configuration.GetSection("Rag"));
-        
-        services.AddSemanticKernel()
-            .AddAzureOpenAI()
-            .AddQdrantVectorStore()
-            .AddAzureOpenAITextEmbedding();
+    { 
+        services.Configure<SystemLLMConfigOptions>(context.Configuration);
+        services.AddSemanticKernel();
     })
     .UseConsoleLifetime();
 
